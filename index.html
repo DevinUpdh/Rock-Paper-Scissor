@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice(){
+            let x = Math.random()
+            if (x<0.33) {
+                return "Rock"
+            }
+            else if (x>0.33 && x<0.67) {
+                return "Paper"
+            }   
+            else {
+                return "Scissors"
+            }
+
+        }
+        console.log(getComputerChoice())
+
+        function getHumanChoice(){
+            let user = prompt("What move would you like to play (Rock, Paper, or Scissors):  ").toLowerCase();
+            while (user !== "rock" && user !== "paper" && user !== "scissors") {
+                user = prompt("Please enter a valid move (check your spelling): ").toLowerCase();
+            }
+            return user;
+        }
+
+        let humanScore = 0
+        let compScore = 0
+        function playRound(humanChoice, compChoice) {
+            if (humanChoice === compChoice.toLowerCase()){
+                console.log("Draw!");
+            } else if (humanChoice === "rock" && compChoice === "Scissors" || 
+                       humanChoice === "paper" && compChoice === "Rock" || 
+                       humanChoice === "scissors" && compChoice === "Paper") {
+                console.log(`You win! ${humanChoice} beats ${compChoice}`);
+                humanScore += 1;
+            } else {
+                console.log(`You lose! ${compChoice} beats ${humanChoice}`);
+                compScore += 1;
+            }
+        }
+        
+        function playGame(){
+            for (let i=0; i<5; i++){
+                const humanChoice = getHumanChoice();
+                const compChoice = getComputerChoice();
+                playRound(humanChoice, compChoice)
+            }
+            console.log(`Final Score - Human: ${humanScore}, Computer: ${compScore}`);
+        }
+        playGame();
+    </script>
+</body>
+</html>
