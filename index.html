@@ -30,31 +30,6 @@
             return user;
         }
 
-        let humanScore = 0
-        let compScore = 0
-        function playRound(humanChoice, compChoice) {
-            if (humanChoice === compChoice.toLowerCase()){
-                console.log("Draw!");
-            } else if (humanChoice === "rock" && compChoice === "Scissors" || 
-                       humanChoice === "paper" && compChoice === "Rock" || 
-                       humanChoice === "scissors" && compChoice === "Paper") {
-                console.log(`You win! ${humanChoice} beats ${compChoice}`);
-                humanScore += 1;
-            } else {
-                console.log(`You lose! ${compChoice} beats ${humanChoice}`);
-                compScore += 1;
-            }
-        }
-        
-        function playGame(){
-            for (let i=0; i<5; i++){
-                const humanChoice = getHumanChoice();
-                const compChoice = getComputerChoice();
-                playRound(humanChoice, compChoice)
-            }
-            console.log(`Final Score - Human: ${humanScore}, Computer: ${compScore}`);
-        }
-        playGame();
     </script>
 </body>
 </html>
